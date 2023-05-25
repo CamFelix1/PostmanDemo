@@ -1,0 +1,72 @@
+{
+	"info": {
+		"_postman_id": "b41769d9-ca77-4ba6-8597-025adb801ea9",
+		"name": "DemoBook",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27616515",
+		"_collection_link": "https://crimson-capsule-636304.postman.co/workspace/PostmanDemo~b6c45d01-1af7-4cf9-8d48-952efa69be26/collection/27616515-b41769d9-ca77-4ba6-8597-025adb801ea9?action=share&creator=27616515&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "GETALLPOSTS",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://jsonplaceholder.typicode.com/posts",
+					"protocol": "https",
+					"host": [
+						"jsonplaceholder",
+						"typicode",
+						"com"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GETSINGLEPOST",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {pm.response.to.have.status(200)\r",
+							"});\r",
+							"pm.test(\"Response time is less than 400ms\", function () {pm.expect(pm.response.responseTime).to.be.below(400);\r",
+							"});\r",
+							"pm.test(\"Json response is not empty\", function (){pm.expect(pm.\r",
+							"    response).to.be.json;\r",
+							"});\r",
+							"pm.test(\"Json response userId eq 1\", function (){var jsonRes = pm.response.json();\r",
+							"pm.expect(jsonRes.userId).to.eq(1);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://jsonplaceholder.typicode.com/posts/{{PostID}}",
+					"protocol": "https",
+					"host": [
+						"jsonplaceholder",
+						"typicode",
+						"com"
+					],
+					"path": [
+						"posts",
+						"{{PostID}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
